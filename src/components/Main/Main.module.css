@@ -1,0 +1,40 @@
+.page {
+    display: flex;
+    height: 90%;
+    min-height: 900px;
+}
+
+.main {
+    display: flex;
+    width: 82%;
+    padding: 4% 6% 4% 6%;
+    flex-direction: column;
+}
+
+.info {
+    display: flex;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.charts {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    gap: 20px;
+}
+
+.sessions {
+    display: flex;
+    gap: 20px;
+    height: 100%;
+}
+
+.nutrition {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 20%;
+}

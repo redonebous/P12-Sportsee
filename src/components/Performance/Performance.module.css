@@ -1,0 +1,9 @@
+.box {
+    background: #282D30;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 33%;
+}

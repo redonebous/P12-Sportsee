@@ -1,0 +1,81 @@
+.nutriment {
+    height: 124px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #FBFBFB;
+    border-radius: 5px;
+}
+
+.nutriment div {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+}
+
+.nutriment div i {
+    padding: 20px;
+    font-size: 20px;
+}
+
+.calorie {
+    color: #FF0000;
+    background-color: #FF00001A;
+    border-radius: 5px;
+}
+
+.protein {
+    color: #4AB8FF;
+    background-color: #4AB8FF1A;
+    border-radius: 5px;
+    transform: rotate(180deg);
+}
+
+.carbo {
+    color: #FDCC0C;
+    background-color: #FDCC0C1A;
+    border-radius: 5px;
+}
+
+.lipid {
+    color: #FD5181;
+    background-color: #FD51811A;
+    border-radius: 5px;
+}
+
+.nutriment p {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+
+.nutriment span {
+    font-family: "Roboto";
+}
+
+.nutriment p :first-child {
+    font-weight: 700;
+
+}
+
+.nutriment p :last-child {
+    font-weight: 500;
+    color: #74798C;
+
+}
+
+
+@media (max-width: 1200px) {
+    .nutriment div i {
+        padding: 15px;
+        font-size: 15px;
+    }
+
+    .nutriment p {
+        gap: 2px;
+    }
+
+}

@@ -1,0 +1,32 @@
+.box {
+    background: #FF0000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 33%;
+
+}
+
+.box span {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    color: white;
+    font-family: 'Roboto';
+    width: 60%;
+    opacity: 0.7;
+}
+
+.tooltip {
+    height: 40px;
+    width: 60px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 14px;
+}

@@ -38,3 +38,15 @@
     gap: 20px;
     width: 20%;
 }
+
+.erreur {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-weight: 500;
+
+}

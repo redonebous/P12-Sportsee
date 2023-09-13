@@ -4,7 +4,7 @@ import mockData from './mockData.js'
 function useFetch(url) {
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null)
+    const [error, setError] = useState(false)
 
     const API_MODE = true;
 
@@ -16,8 +16,15 @@ function useFetch(url) {
             fetch(url)
                 .then((res) => res.json())
                 .then((data) => data.data)
-                .then((data) => setData(data))
-                .catch((err) => setError(err))
+                .then((data) => {
+                    if (data) {
+                        setData(data)
+                    } else {
+                        throw new Error()
+                    }
+                }
+                )
+                .catch((err) => setError(true))
                 .finally(() => setLoading(false))
 
 
@@ -27,32 +34,37 @@ function useFetch(url) {
             let parse = url.split('/');
             let type = parse[parse.length - 1];
             let id = parse[parse.length - 2];
-            let data;
+            let mock;
 
             switch (type) {
                 case 'activity':
-                    data = mockData.USER_ACTIVITY.filter((data) => data.userId == id);
-                    setData(data[0])
+                    mock = mockData.USER_ACTIVITY.filter((d) => d.userId == id);
                     break;
                 case 'average-sessions':
-                    data = mockData.USER_AVERAGE_SESSIONS.filter((data) => data.userId == id);
-                    setData(data[0])
+                    mock = mockData.USER_AVERAGE_SESSIONS.filter((d) => d.userId == id);
                     break;
                 case 'performance':
-                    data = mockData.USER_PERFORMANCE.filter((data) => data.userId == id);
-                    setData(data[0])
+                    mock = mockData.USER_PERFORMANCE.filter((d) => d.userId == id);
                     break;
 
                 default:
-                    data = mockData.USER_MAIN_DATA.filter((data) => data.id == type);
-                    setData(data[0]);
+                    mock = mockData.USER_MAIN_DATA.filter((d) => d.id == type);
                     break;
             }
+
+            if (mock.length == 0) {
+                setError(true);
+            } else {
+
+                setData({ ...mock[0] });
+            }
+
+
             setLoading(false)
 
         }
 
-    }, [url])
+    }, [url, API_MODE])
 
 
     return { data, loading, error }

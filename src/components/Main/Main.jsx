@@ -18,46 +18,50 @@ export default function Main() {
     const navigate = useNavigate()
 
 
-    const { data, loading } = useFetch('http://127.0.0.1:3000/user/' + params.id)
+    const { data, loading, error } = useFetch('http://127.0.0.1:3000/user/' + params.id)
 
-    let format = new FormatData(data, 'main')
-    let formated = format.getFormatedData()
-    //console.log(formated)
-    let nutriments
-    if (formated) {
-        nutriments = Object.entries(formated?.keyData)
-    }
 
 
     if (loading) return <div></div>
 
+    if (error) {
 
+        return <div className={styles.erreur}>Une erreur est survenue lors du chargement des données...</div>
 
+    } else {
+        let format = new FormatData(data, 'main')
+        let formated = format.getFormatedData()
+        let nutriments
+        if (formated) {
+            nutriments = Object.entries(formated?.keyData)
+        }
 
-    return (
-        <div className={styles.page}>
-            <SideBar />
-            <div className={styles.main}>
-                <Banner user={data?.userInfos} />
-                <div className={styles.info}>
-                    <div className={styles.charts}>
-                        <Activity id={params.id} />
+        return (
+            <div className={styles.page}>
+                <SideBar />
+                <div className={styles.main}>
+                    <Banner user={data?.userInfos} />
+                    <div className={styles.info}>
+                        <div className={styles.charts}>
+                            <Activity id={params.id} />
 
-                        <div className={styles.sessions}>
-                            <Objectif id={params.id} />
-                            <Performance id={params.id} />
-                            <KPI score={data?.score || data?.todayScore} />
+                            <div className={styles.sessions}>
+                                <Objectif id={params.id} />
+                                <Performance id={params.id} />
+                                <KPI score={data?.score || data?.todayScore} />
+                            </div>
+
+                        </div>
+
+                        <div className={styles.nutrition}>
+                            {nutriments?.map((data, k) => <Nutriment key={k} data={data} />)}
                         </div>
 
                     </div>
-
-                    <div className={styles.nutrition}>
-                        {nutriments?.map((data, k) => <Nutriment key={k} data={data} />)}
-                    </div>
-
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
+
 
 }

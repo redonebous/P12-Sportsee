@@ -30,11 +30,9 @@
 }
 
 .copyright {
-    position: absolute;
     color: white;
-    transform: rotate(270deg);
+    transform: rotate(270deg) translateX(-200px);
     font-size: 12px;
-    bottom: 10%;
     font-family: 'Roboto';
     font-weight: 500;
     white-space: nowrap;
